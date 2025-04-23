@@ -36,4 +36,21 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Deletar usuário (isso é so para eu e vc ter accesso a esse endpoint, o usuario não pode deletar o proprio usuario)
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [resultado] = await db.execute('DELETE FROM usuarios WHERE id = ?', [id]);
+
+    if (resultado.affectedRows === 0) {
+      return res.status(404).json({ mensagem: 'Usuário não encontrado' });
+    }
+
+    res.json({ mensagem: 'Usuário e registros excluídos com sucesso' });
+  } catch (err) {
+    res.status(500).json({ erro: 'Erro ao excluir usuário', detalhes: err.message });
+  }
+});
+
 module.exports = router;
