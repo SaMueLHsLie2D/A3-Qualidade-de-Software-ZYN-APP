@@ -1,4 +1,19 @@
-Alteração na tabela dados_saude pra registros_saude
+Novas tabelas do banco pra vc criar
+
+--Nome do Banco/Schemas
+
+zyn_app_db
+
+-- Tabela de usuários
+
+CREATE TABLE usuarios (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ nome VARCHAR(100),
+ email VARCHAR(100) UNIQUE,
+ senha VARCHAR(255)
+);
+
+-- Tabela registros_saude
 
 CREATE TABLE registros_saude (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -12,5 +27,6 @@ CREATE TABLE registros_saude (
   data_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
 
 *a aplicação nn precisa calcular o imc o banco já conseque fazer isso.(Aprendi isso ontem então já implementei)
