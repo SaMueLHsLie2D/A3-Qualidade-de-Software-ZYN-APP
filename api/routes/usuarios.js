@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const db = require('../db');
 const router = express.Router();
 
-// Cadastro
+// Cadastro 
 router.post('/cadastro', async (req, res) => {
   const { nome, email, senha } = req.body;
   try {
