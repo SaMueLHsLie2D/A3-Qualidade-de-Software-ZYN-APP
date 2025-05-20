@@ -25,8 +25,6 @@ router.put('/update-full', async (req, res) => {
   }
 });
 
-module.exports = router;
-
 // Altera o registro de peso
 
 router.put('/weight', async (req, res) => {
@@ -142,3 +140,5 @@ router.put('/weight-goal', async (req, res) => {
     res.status(500).json({ erro: err.message });
   }
 });
+
+module.exports = router;

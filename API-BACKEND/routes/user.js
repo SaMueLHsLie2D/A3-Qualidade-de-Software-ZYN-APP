@@ -2,8 +2,17 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// Cadastro de usuário
+// Listar usuários
+router.get('/', async (req, res) => {
+  try {
+    const [rows] = await db.execute('SELECT id, nome, email FROM usuarios');
+    res.status(200).json(rows);
+  } catch (err) {
+    res.status(500).json({ erro: err.message });
+  }
+});
 
+// Cadastro de usuário
 router.post('/register-full', async (req, res) => {
   const {
     nome,
@@ -47,7 +56,6 @@ router.post('/register-full', async (req, res) => {
 });
 
 // Login de usuário
-
 router.post('/login', async (req, res) => {
   const { email, senha } = req.body;
   try {
@@ -65,10 +73,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-module.exports = router;
-
 // Deletar usuário
-
 router.delete('/:id', async (req, res) => {
   const usuarioId = req.params.id;
   try {
@@ -85,3 +90,5 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ erro: err.message });
   }
 });
+
+module.exports = router;
