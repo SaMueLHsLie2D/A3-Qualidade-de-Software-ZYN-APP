@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+
+
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+img {
+    object-fit: cover;
+}
+
+nav {
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  background-color: #fff; 
+}
+
+/* Deixa a logo alinhada na esquerda */
+nav a.logo {
+  font-size: 33px;
+  color: #0f2182;
+  font-weight: bold;
+  flex: 0; /* não cresce */
+}
+
+/* CENTRALIZA os botões */
+nav .links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex: 1; /* ocupa o espaço central */
+}
+
+nav .links button {
+  padding: 8px 14px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+nav .links button:hover {
+  color: #000;
+}
+
+/* Deixa o login alinhado à direita */
+nav .login {
+  flex: 0; /* não cresce */
+}
+
+header {
+    padding: 0 80px;
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .left {
+    width: 700px;
+}
+
+header .left h1 {
+    font-size: 80px;
+}
+
+header .left h1 span {
+    color: #0f2182;
+}
+
+header .left p {
+    margin: 40px 0;
+    color: #777;
+}
+
+header .left a {
+    display: flex;
+    align-items: center;
+    background: #000;
+    width: 200px;
+    padding: 8px;
+    border-radius: 60px;
+}
+
+header .left a i {
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 8px;
+    background-color: #fff;
+}
+
+header .left a span {
+    color: #fff;
+    margin-left: 10px;
+}
+
+header img {
+    width: 600px;
+}
+
+h2.separator {
+    font-size: 40px;
+    margin-top: 40px;
+    padding: 0 80px;
+} 
+
+.home-widget {
+  padding: 0 80px;
+  margin: 50px 0 80px;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.home-widget .item,
+.home .nft-list .item {
+
+  padding: 20px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, #1f4b73 0%, #0f1e46 100%);;
+  color: #fff;
+}
+
+.home-widget .item:hover,
+.nft-shop .nft-list .item:hover,
+.sellers .item:hover {
+
+  box-shadow: none;
+}
+
+.home-widget .item .header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+}
+
+.home-widget .item .header i {
+  font-size: 17px;
+}
+
+.home-widget .item p {
+  font-size: 12px;
+  margin-top: 10px;
+  padding: 0 4px;
+  color: rgb(221, 223, 225);
+}
+
+
+.footer {
+  margin-top: 50px;
+  padding: 40px 80px;
+  background-color: #fff;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.footer h3 {
+  font-size: 24px;
+  color: #0f2182;
+  margin-bottom: 20px;
+}
+
+.footer .right {
+  margin-bottom: 20px;
+}
+
+.footer .links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer .links a {
+  color: #0f2182;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer .links a:hover {
+  color: #000;
+}
+
+.footer .social {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer .social i {
+  font-size: 24px;
+  color: #0f2182;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer .social i:hover {
+  color: #000;
+}
+
+.footer p {
+  margin-top: 30px;
+  font-size: 12px;
+  color: #777;
+}
+
