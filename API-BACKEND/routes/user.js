@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// Criar usuário
-router.post('/cadastrar-completo', async (req, res) => {
+// Cadastro de usuário
+
+router.post('/register-full', async (req, res) => {
   const {
     nome,
     email,
@@ -19,7 +20,6 @@ router.post('/cadastrar-completo', async (req, res) => {
   try {
     await conn.beginTransaction();
 
-    // 1. Inserir usuário
     const [usuarioResult] = await conn.execute(
       'INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)',
       [nome, email, senha]
@@ -27,7 +27,6 @@ router.post('/cadastrar-completo', async (req, res) => {
 
     const usuario_id = usuarioResult.insertId;
 
-    // 2. Inserir registro de saúde
     await conn.execute(
       `INSERT INTO registros_saude 
         (usuario_id, peso, altura, gordura_corporal, faz_exercicio, meta_perda_peso)
@@ -47,7 +46,8 @@ router.post('/cadastrar-completo', async (req, res) => {
   }
 });
 
-// Logar usuário
+// Login de usuário
+
 router.post('/login', async (req, res) => {
   const { email, senha } = req.body;
   try {
@@ -66,3 +66,22 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
+// Deletar usuário
+
+router.delete('/:id', async (req, res) => {
+  const usuarioId = req.params.id;
+  try {
+    const [result] = await db.execute(
+      'DELETE FROM usuarios WHERE id = ?',
+      [usuarioId]
+    );
+    if (result.affectedRows > 0) {
+      res.status(200).json({ mensagem: 'Usuário deletado com sucesso!' });
+    } else {
+      res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+  } catch (err) {
+    res.status(500).json({ erro: err.message });
+  }
+});

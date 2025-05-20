@@ -1,4 +1,6 @@
-Novas tabelas do banco pra vc criar
+Para iniciar a api execute o comando "node app.js" no terminal.
+
+-Bancos e Tabelas-
 
 --Nome do Banco/Schemas
 
