@@ -9,7 +9,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api/users', userRoutes);
-app.use('/api/health-records', registerRoutes);
+app.use('/api/registros-saude', registerRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+module.exports = app;
