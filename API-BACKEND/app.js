@@ -1,38 +1,28 @@
+/**
+ * Configuração principal da aplicação Express
+ * 
+ * Este arquivo configura a aplicação Express, incluindo middlewares,
+ * rotas e outras configurações necessárias para o funcionamento da API.
+ * 
+ * @module app
+ */
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const userRoutes = require('./routes/user');
-const registerRoutes = require('./routes/register');
-const { authenticateToken } = require('./middleware/auth');
+const userRoutes = require('./routes/users');
+const healthRecordsRoutes = require('./routes/healthRecords');
 
+// Inicializa a aplicação Express
 const app = express();
 
-// Middleware global
-app.use(cors());
-app.use(bodyParser.json());
+// Configura middlewares
+app.use(cors()); // Habilita CORS para todas as origens
+app.use(bodyParser.json()); // Processa requisições com corpo JSON
 
-// Rotas públicas
-app.use('/api/users', userRoutes);
+// Configura rotas da API
+app.use('/api/users', userRoutes); // Rotas de usuários
+app.use('/api/registros-saude', healthRecordsRoutes); // Rotas de registros de saúde
 
-// Rotas protegidas
-app.use('/api/registros-saude', authenticateToken, registerRoutes);
-
-// Middleware de tratamento de erros
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({
-    status: 'error',
-    message: 'Erro interno do servidor',
-    error: process.env.NODE_ENV === 'development' ? err.message : undefined
-  });
-});
-
-// Middleware para rotas não encontradas
-app.use((req, res) => {
-  res.status(404).json({
-    status: 'error',
-    message: 'Rota não encontrada'
-  });
-});
-
+// Exporta a aplicação configurada para uso no servidor
 module.exports = app;
