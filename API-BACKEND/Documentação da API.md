@@ -50,7 +50,7 @@ cd A3-Qualidade-de-Software-ZYN-APP
 2. Instale as dependências
 
 ```bash
-npm install
+cd
 ```
 
 3. Configure o arquivo .env conforme instruções acima
@@ -77,7 +77,16 @@ npm test
 
 ## Endpoints
 
+| Método | Endpoint                 | Descrição                           |
+| ------ | ------------------------ | ----------------------------------- |
+| GET    | /api/users               | Lista todos os usuários             |
+| POST   | /api/users/register-full | Cadastra usuário com dados de saúde |
+| POST   | /api/users/login         | Realiza login e retorna ID e nome   |
+| DELETE | /api/users/:id           | Deleta um usuário específico        |
+
 ### Usuários
+
+Os endpoints desta seção permitem o gerenciamento de contas de usuário, incluindo operações de criação, autenticação, listagem, e exclusão. As senhas são armazenadas com hash bcrypt para segurança.
 
 #### Listar Todos os Usuários
 

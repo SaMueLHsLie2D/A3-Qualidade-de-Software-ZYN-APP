@@ -30,12 +30,12 @@ Armazena informações dos usuários do sistema.
 
 #### Estrutura
 
-| Campo      | Tipo         | Descrição                                      | Restrições                  |
-| ---------- | ------------ | ---------------------------------------------- | --------------------------- |
-| id         | INT          | Identificador único do usuário                 | PK, AUTO_INCREMENT          |
-| nome       | VARCHAR(100) | Nome completo do usuário                       | NOT NULL                    |
-| email      | VARCHAR(100) | Endereço de email do usuário                   | NOT NULL, UNIQUE            |
-| senha      | VARCHAR(255) | Senha do usuário (hash bcrypt)                 | NOT NULL                    |
+| Campo | Tipo         | Descrição                      | Restrições         |
+| ----- | ------------ | ------------------------------ | ------------------ |
+| id    | INT          | Identificador único do usuário | PK, AUTO_INCREMENT |
+| nome  | VARCHAR(100) | Nome completo do usuário       | NOT NULL           |
+| email | VARCHAR(100) | Endereço de email do usuário   | NOT NULL, UNIQUE   |
+| senha | VARCHAR(255) | Senha do usuário (hash bcrypt) | NOT NULL           |
 
 #### Índices
 
@@ -64,17 +64,17 @@ Armazena os registros de saúde dos usuários.
 
 #### Estrutura
 
-| Campo            | Tipo       | Descrição                                 | Restrições                  |
-| ---------------- | ---------- | ----------------------------------------- | --------------------------- |
-| id               | INT        | Identificador único do registro           | PK, AUTO_INCREMENT          |
-| usuario_id       | INT        | ID do usuário relacionado                 | FK, NOT NULL                |
-| peso             | DECIMAL(5,2)| Peso atual do usuário (kg)               | NOT NULL                    |
-| altura           | DECIMAL(4,2)| Altura do usuário (m)                    | NOT NULL                    |
-| gordura_corporal | DECIMAL(5,2)| Percentual de gordura corporal           | NULL                        |
-| imc              | DECIMAL(5,2)| Índice de Massa Corporal                 | GENERATED ALWAYS AS (peso / (altura * altura)) STORED |
-| faz_exercicio    | BOOLEAN    | Indica se o usuário pratica exercícios    | DEFAULT FALSE               |
-| meta_perda_peso  | DECIMAL(5,2)| Meta de perda de peso (kg)               | NULL                        |
-| data_registro    | DATETIME   | Data/hora de criação do registro          | DEFAULT CURRENT_TIMESTAMP   |
+| Campo            | Tipo         | Descrição                              | Restrições                                             |
+| ---------------- | ------------ | -------------------------------------- | ------------------------------------------------------ |
+| id               | INT          | Identificador único do registro        | PK, AUTO_INCREMENT                                     |
+| usuario_id       | INT          | ID do usuário relacionado              | FK, NOT NULL                                           |
+| peso             | DECIMAL(5,2) | Peso atual do usuário (kg)             | NOT NULL                                               |
+| altura           | DECIMAL(4,2) | Altura do usuário (m)                  | NOT NULL                                               |
+| gordura_corporal | DECIMAL(5,2) | Percentual de gordura corporal         | NULL                                                   |
+| imc              | DECIMAL(5,2) | Índice de Massa Corporal               | GENERATED ALWAYS AS (peso / (altura \* altura)) STORED |
+| faz_exercicio    | BOOLEAN      | Indica se o usuário pratica exercícios | DEFAULT FALSE                                          |
+| meta_perda_peso  | DECIMAL(5,2) | Meta de perda de peso (kg)             | NULL                                                   |
+| data_registro    | DATETIME     | Data/hora de criação do registro       | DEFAULT CURRENT_TIMESTAMP                              |
 
 #### Índices
 
