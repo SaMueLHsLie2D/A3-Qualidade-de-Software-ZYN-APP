@@ -1,8 +1,31 @@
+/**
+ * Controller para gerenciamento de registros de saúde
+ * 
+ * Este módulo contém funções para manipulação de registros de saúde dos usuários,
+ * incluindo atualização de métricas como peso, altura, gordura corporal, status de exercício
+ * e meta de perda de peso.(Apenas para os desenvolvedores)
+ * 
+ * @module healthRecordController
+ */
+
 const HealthRecord = require('../models/HealthRecord');
 
-// Controller para gerenciar registros de saúde
 const healthRecordController = {
-  // Atualizar registro de saúde completo
+  /**
+   * Atualiza todos os dados de saúde de um usuário
+   * 
+   * @async
+   * @param {Object} req - Objeto de requisição Express
+   * @param {Object} req.body - Dados de saúde do usuário
+   * @param {number} req.body.usuario_id - ID do usuário
+   * @param {number} req.body.peso - Peso do usuário em kg
+   * @param {number} req.body.altura - Altura do usuário em metros
+   * @param {number} [req.body.gordura_corporal] - Percentual de gordura corporal
+   * @param {boolean} [req.body.faz_exercicio] - Indica se o usuário pratica exercícios
+   * @param {number} [req.body.meta_perda_peso] - Meta de perda de peso em kg
+   * @param {Object} res - Objeto de resposta Express
+   * @returns {Object} JSON com mensagem de sucesso ou erro
+   */
   updateFull: async (req, res) => {
     try {
       const healthData = req.body;
@@ -32,7 +55,17 @@ const healthRecordController = {
     }
   },
 
-  // Atualizar peso
+  /**
+   * Atualiza apenas o peso do usuário
+   * 
+   * @async
+   * @param {Object} req - Objeto de requisição Express
+   * @param {Object} req.body - Dados do usuário
+   * @param {number} req.body.usuario_id - ID do usuário
+   * @param {number} req.body.peso - Novo peso do usuário em kg
+   * @param {Object} res - Objeto de resposta Express
+   * @returns {Object} JSON com mensagem de sucesso ou erro
+   */
   updateWeight: async (req, res) => {
     try {
       const { usuario_id, peso } = req.body;
@@ -62,7 +95,17 @@ const healthRecordController = {
     }
   },
 
-  // Atualizar altura
+  /**
+   * Atualiza apenas a altura do usuário
+   * 
+   * @async
+   * @param {Object} req - Objeto de requisição Express
+   * @param {Object} req.body - Dados do usuário
+   * @param {number} req.body.usuario_id - ID do usuário
+   * @param {number} req.body.altura - Nova altura do usuário em metros
+   * @param {Object} res - Objeto de resposta Express
+   * @returns {Object} JSON com mensagem de sucesso ou erro
+   */
   updateHeight: async (req, res) => {
     try {
       const { usuario_id, altura } = req.body;
@@ -92,7 +135,17 @@ const healthRecordController = {
     }
   },
 
-  // Atualizar gordura corporal
+  /**
+   * Atualiza apenas o percentual de gordura corporal do usuário
+   * 
+   * @async
+   * @param {Object} req - Objeto de requisição Express
+   * @param {Object} req.body - Dados do usuário
+   * @param {number} req.body.usuario_id - ID do usuário
+   * @param {number} req.body.gordura_corporal - Novo percentual de gordura corporal
+   * @param {Object} res - Objeto de resposta Express
+   * @returns {Object} JSON com mensagem de sucesso ou erro
+   */
   updateBodyFat: async (req, res) => {
     try {
       const { usuario_id, gordura_corporal } = req.body;
@@ -122,7 +175,17 @@ const healthRecordController = {
     }
   },
 
-  // Atualizar status de exercício
+  /**
+   * Atualiza o status de prática de exercícios do usuário
+   * 
+   * @async
+   * @param {Object} req - Objeto de requisição Express
+   * @param {Object} req.body - Dados do usuário
+   * @param {number} req.body.usuario_id - ID do usuário
+   * @param {boolean} req.body.faz_exercicio - Novo status de prática de exercícios
+   * @param {Object} res - Objeto de resposta Express
+   * @returns {Object} JSON com mensagem de sucesso ou erro
+   */
   updateExerciseStatus: async (req, res) => {
     try {
       const { usuario_id, faz_exercicio } = req.body;
@@ -152,7 +215,17 @@ const healthRecordController = {
     }
   },
 
-  // Atualizar meta de perda de peso
+  /**
+   * Atualiza a meta de perda de peso do usuário
+   * 
+   * @async
+   * @param {Object} req - Objeto de requisição Express
+   * @param {Object} req.body - Dados do usuário
+   * @param {number} req.body.usuario_id - ID do usuário
+   * @param {number} req.body.meta_perda_peso - Nova meta de perda de peso em kg
+   * @param {Object} res - Objeto de resposta Express
+   * @returns {Object} JSON com mensagem de sucesso ou erro
+   */
   updateWeightGoal: async (req, res) => {
     try {
       const { usuario_id, meta_perda_peso } = req.body;
