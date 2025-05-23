@@ -39,7 +39,7 @@ function Login() {
 
     try {
       // faz o envio dos dados de login para a API usando o método POST
-      const resposta = await fetch('http://localhost:3000/api/routes/users/login', {
+      const resposta = await fetch('http://localhost:3000/api/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

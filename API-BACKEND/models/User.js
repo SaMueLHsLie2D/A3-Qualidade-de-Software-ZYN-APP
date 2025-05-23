@@ -121,11 +121,14 @@ class User {
       );
       
       const userId = userResult.insertId;
+
+      // Converter 'sim'/'nao' para 1/0
+      const fazExercicioInt = faz_exercicio === 'sim' ? 1 : 0;
       
       // Inserir dados de saúde
       await connection.query(
         'INSERT INTO registros_saude (usuario_id, peso, altura, gordura_corporal, faz_exercicio, meta_perda_peso) VALUES (?, ?, ?, ?, ?, ?)',
-        [userId, peso, altura, gordura_corporal, faz_exercicio, meta_perda_peso]
+        [userId, peso, altura, gordura_corporal, fazExercicioInt, meta_perda_peso] // Usa a porra da variável convertida
       );
       
       // Confirmar transação

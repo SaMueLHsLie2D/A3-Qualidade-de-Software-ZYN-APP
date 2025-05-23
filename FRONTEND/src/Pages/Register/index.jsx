@@ -67,7 +67,7 @@ function Register() {
 
 
     try {
-      const res = await fetch('http://localhost:3000/api/routes/users/resgiter-full', {
+      const res = await fetch('http://localhost:3000/api/users/register-full', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }, // corpo da requisisão em formato JSON
         body: JSON.stringify(form) // convertendo os objetos do formulário para JSON
