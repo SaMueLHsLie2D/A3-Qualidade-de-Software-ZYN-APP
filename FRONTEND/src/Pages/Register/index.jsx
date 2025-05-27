@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import './art.css';
 
 // Estado que armazena os dados do formulário de registro
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate(); // Instanciar useNavigate
   const [form, setForm] = useState({
     nome: '',
     email: '',
@@ -43,7 +45,7 @@ function Register() {
     }
 
     // Bloquear caracteres invalidos
-    const invalido = /[<>"';]/;
+    const invalido = /[<>"";]/;
     if (invalido.test(form.nome) || invalido.test(form.email)) {
       alert('Caracteres inválidos detectados em nome ou email.');
       return;
@@ -76,14 +78,16 @@ function Register() {
       const data = await res.json();
       
       if (res.ok) {
-        alert(data.mensagem);
-        navigate('/');
+        alert(data.mensagem); // Mostrar mensagem de sucesso
+        navigate('/'); // Redirecionar para a página de login
       } else {
-        alert(`Erro: ${data.erro}`);
+        // Se a API retornar um erro (res.ok === false), mostrar o erro específico da API
+        alert(`Erro no cadastro: ${data.erro || 'Erro desconhecido do servidor.'}`);
       }
     } catch (err) {
-      console.error('Erro ao conectar com a API:', err);
-      alert('Erro ao conectar com a API. Verifique se o servidor está rodando.');
+      // Este catch agora só deve pegar erros de rede/conexão ou erros inesperados no fetch/json()
+      console.error('Erro ao conectar com a API ou processar resposta:', err);
+      alert('Falha ao conectar com o servidor. Verifique sua conexão ou se o servidor está rodando.');
     }
   };
 
@@ -184,7 +188,8 @@ function Register() {
 
         <div className="button-group">
           <button type="submit">Registrar</button>
-          <button type="button" onClick={() => navigate('/')}>Voltar</button>
+          {/* O botão Voltar já usa navigate, então deve funcionar após a correção */}
+          <button type="button" onClick={() => navigate('/')}>Voltar</button> 
         </div>
       </form>
     </div>
